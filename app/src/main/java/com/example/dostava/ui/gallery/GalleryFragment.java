@@ -60,15 +60,15 @@ public class GalleryFragment extends Fragment {
 
         ListView lwItems = view.findViewById(R.id.lwItems);
         mDatabaseHelper=new DatabaseHelper(getContext());
-        ArrayList<String> imena=new ArrayList<>();
+        ArrayList<String> users=new ArrayList<>();
         Cursor data=mDatabaseHelper.getListContents();
         if(data.getCount()==0){
-            Toast.makeText(getContext(),"The data is empty",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Trenutno nema korisnika",Toast.LENGTH_SHORT).show();
         }else{
             while(data.moveToNext()){
-                imena.add(data.getString(1)+" "+data.getString(2)+" "+data.getString(3)+" | "+
-                        data.getString(5));
-                ListAdapter adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,imena);
+                users.add(data.getString(0)+" "+data.getString(1)+" "+data.getString(2)+" | "+
+                        data.getString(4));
+                ListAdapter adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,users);
                 lwItems.setAdapter(adapter);
             }
         }

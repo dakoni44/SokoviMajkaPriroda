@@ -36,14 +36,12 @@ public class IzmenaActivity extends AppCompatActivity {
             do {
                 User user = new User(data.getString(1), data.getString(2), data.getString(3),
                         data.getString(4), data.getString(5), data.getString(6),
-                        data.getString(7), data.getString(8), data.getString(9),
-                        data.getString(10));
+                        data.getString(7), data.getString(8), data.getString(9));
                 users.add(user);
             } while (data.moveToNext());
         }
         editId=findViewById(R.id.edit_id2);
         editId.setHint("Unesite id korisinika: ");
-        editId.setText(users.get(position).getId());
         editIme= findViewById(R.id.edit_ime2);
         editIme.setHint("Unesite ime korisinika: ");
         editIme.setText(users.get(position).getIme());
@@ -94,7 +92,7 @@ public class IzmenaActivity extends AppCompatActivity {
                             String sokovi, String cena, String isporuceno){
         boolean updateData=mDatabaseHelper.updateData(id,ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno);
         if(updateData==true){
-            Toast.makeText(this,"Uspesno imenjen korisnik",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Proverite izmenu zbog id-a",Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this,"Nije uspela izmena korisnika",Toast.LENGTH_SHORT).show();
         }

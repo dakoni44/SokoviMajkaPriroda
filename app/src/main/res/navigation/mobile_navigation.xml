@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/nav_izbrisi"
-        android:name="com.example.dostava.ui.slideshow.SlideshowFragment"
+        android:name="com.example.dostava.ui.izbrisi.IzbrisiFragment"
         android:label="@string/menu_izbrisi"
         tools:layout="@layout/izbrisi_fragment" />
 

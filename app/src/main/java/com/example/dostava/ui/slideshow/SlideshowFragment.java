@@ -56,8 +56,8 @@ public class SlideshowFragment extends Fragment {
             Toast.makeText(getContext(),"The data is empty",Toast.LENGTH_SHORT).show();
         }else{
             while(data.moveToNext()){
-                users.add(data.getString(1)+" "+data.getString(2)+" "+data.getString(3)+" | "+
-                        data.getString(5));
+                users.add(data.getString(0)+" "+data.getString(1)+" "+data.getString(2)+" | "+
+                        data.getString(3));
                 ListAdapter adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,users);
                 lwItems.setAdapter(adapter);
             }

@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private Button btnOk;
-    private EditText editId,editIme,editPrezime,editAdresa,editGrad,editDatum,editTelefon,editSokovi,editCena,editIsporuceno;
+    private EditText editIme,editPrezime,editAdresa,editGrad,editDatum,editTelefon,editSokovi,editCena,editIsporuceno;
     DatabaseHelper mDatabaseHelper;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -38,7 +38,6 @@ public class HomeFragment extends Fragment {
         homeViewModel.getText().observe(getActivity(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-
             }
         });
 
@@ -49,7 +48,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        editId=view.findViewById(R.id.edit_id);
+
         editIme= view.findViewById(R.id.edit_ime);
         editPrezime=view.findViewById(R.id.edit_prezime);
         editAdresa= view.findViewById(R.id.edit_adresa);
@@ -64,7 +63,6 @@ public class HomeFragment extends Fragment {
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String idS=editId.getText().toString();
                 String imeS=editIme.getText().toString();
                 String prezimeS=editPrezime.getText().toString();
                 String adresaS=editAdresa.getText().toString();
@@ -74,14 +72,14 @@ public class HomeFragment extends Fragment {
                 String sokoviS=editSokovi.getText().toString();
                 String cenaS=editCena.getText().toString();
                 String isporucenoS=editIsporuceno.getText().toString();
-                AddData(idS,imeS,prezimeS,adresaS,gradS,datumS,telefonS,sokoviS,cenaS,isporucenoS);
+                AddData(imeS,prezimeS,adresaS,gradS,datumS,telefonS,sokoviS,cenaS,isporucenoS);
             }
         });
     }
 
-    public void AddData(String id, String ime, String prezime, String adresa, String grad, String datum, String telefon,
+    public void AddData(String ime, String prezime, String adresa, String grad, String datum, String telefon,
                         String sokovi, String cena, String isporuceno){
-        boolean insertData=mDatabaseHelper.addData(id,ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno);
+        boolean insertData=mDatabaseHelper.addData(ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno);
         if(insertData==true){
             Toast.makeText(getContext(),"Uspesno unet korisnik",Toast.LENGTH_SHORT).show();
         }else{

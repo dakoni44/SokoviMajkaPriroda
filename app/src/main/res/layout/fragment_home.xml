@@ -9,11 +9,6 @@
     android:orientation="vertical" >
 
  <EditText
-     android:id="@+id/edit_id"
-     android:layout_width="match_parent"
-     android:layout_height="wrap_content"
-     android:hint="@string/menu_id"/>
- <EditText
      android:id="@+id/edit_ime"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"

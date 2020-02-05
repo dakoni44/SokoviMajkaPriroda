@@ -21,7 +21,8 @@ public class ItemInfo extends AppCompatActivity {
     public static SimpleDateFormat dtf= new SimpleDateFormat("dd.MM.yyyy.");
 
     private int position=0;
-    String id,ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno;
+    String ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno;
+    int id;
     private List<User> users=new ArrayList<>();
 
     @Override
@@ -35,28 +36,25 @@ public class ItemInfo extends AppCompatActivity {
         if (savedInstanceState != null) {
             this.position = savedInstanceState.getInt("position");
         }
-        final int position = getIntent().getIntExtra("position", 0);
+        final int position = getIntent().getIntExtra("position", 1);
         if(cursor.getCount()==0){
             Toast.makeText(this,"Nema svih podataka za korisnika",Toast.LENGTH_SHORT).show();
         }else{
             if(cursor.moveToNext()) {
                 do {
-                    id = cursor.getString(1);
-                    ime = cursor.getString(2);
-                    prezime = cursor.getString(3);
-                    adresa = cursor.getString(4);
-                    grad = cursor.getString(5);
-                    datum = cursor.getString(6);
-                    telefon = cursor.getString(7);
-                    sokovi = cursor.getString(8);
-                    cena = cursor.getString(9);
-                    isporuceno = cursor.getString(10);
-                    User user=new User(id,ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno);
+                    ime = cursor.getString(1);
+                    prezime = cursor.getString(2);
+                    adresa = cursor.getString(3);
+                    grad = cursor.getString(4);
+                    datum = cursor.getString(5);
+                    telefon = cursor.getString(6);
+                    sokovi = cursor.getString(7);
+                    cena = cursor.getString(8);
+                    isporuceno = cursor.getString(9);
+                    User user=new User(ime,prezime,adresa,grad,datum,telefon,sokovi,cena,isporuceno);
                     users.add(user);
                 }while(cursor.moveToNext());
             }
-            TextView tv = findViewById(R.id.textView);
-            tv.setText("Id: " + users.get(position).getId());
             TextView tv1 = findViewById(R.id.textView2);
             tv1.setText("Ime: " + users.get(position).getIme());
             TextView tv2 = findViewById(R.id.textView3);

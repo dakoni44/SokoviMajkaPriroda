@@ -18,7 +18,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "korisnici";
     private static final String COLUMN_ID = "id_column";
-    private static final String USER_ID = "id";
     private static final String USER_IME = "ime";
     private static final String USER_PREZIME = "prezime";
     private static final String USER_ADRESA = "adresa";
@@ -38,7 +37,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE "+TABLE_NAME+" (id_colum INTEGER PRIMARY KEY AUTOINCREMENT, id TEXT,ime TEXT, prezime " +
+        db.execSQL("CREATE TABLE "+TABLE_NAME+" (id_column INTEGER PRIMARY KEY AUTOINCREMENT, ime TEXT, prezime " +
                 "TEXT, adresa TEXT, grad TEXT, datum " +
                 "TEXT, telefon TEXT, sokovi " +
                 "TEXT, cena TEXT, isporuceno TEXT)");
@@ -49,11 +48,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS korisnici");
         onCreate(db);
     }
-    public boolean addData(String idS, String imeS,String prezimeS,String adresaS,String gradS,String datumS,String telefonS,
+    public boolean addData( String imeS,String prezimeS,String adresaS,String gradS,String datumS,String telefonS,
                            String sokoviS,String cenaS,String isporucenoS){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put("id",idS);
         contentValues.put("ime",imeS);
         contentValues.put("prezime",prezimeS);
         contentValues.put("adresa",adresaS);
@@ -78,11 +76,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return data;
     }
 
-    public boolean updateData(String idS, String imeS,String prezimeS,String adresaS,String gradS,String datumS,String telefonS,
+    public boolean updateData( String idS, String imeS,String prezimeS,String adresaS,String gradS,String datumS,String telefonS,
                               String sokoviS,String cenaS,String isporucenoS){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put("id",idS);
+        contentValues.put("id_column",idS);
         contentValues.put("ime",imeS);
         contentValues.put("prezime",prezimeS);
         contentValues.put("adresa",adresaS);
@@ -92,7 +90,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("sokovi",sokoviS);
         contentValues.put("cena",cenaS);
         contentValues.put("isporuceno",isporucenoS);
-        db.update(TABLE_NAME,contentValues,"id=?",new String[]{idS});
+        db.update(TABLE_NAME,contentValues,"id_column = ?",new String[]{idS});
         return true;
     }
+
+    public Integer deleteData(String id){
+        SQLiteDatabase db=this.getWritableDatabase();
+        return db.delete(TABLE_NAME,"id_column = ?", new String[] {id});
+
+}
 }
