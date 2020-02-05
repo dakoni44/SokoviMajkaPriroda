@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dodaj"
+            android:icon="@drawable/ic_dodaj"
+            android:title="@string/menu_dodaj" />
+        <item
+            android:id="@+id/nav_ispisi"
+            android:icon="@drawable/ic_ispisi"
+            android:title="@string/menu_ispisi" />
+        <item
+            android:id="@+id/nav_izmeni"
+            android:icon="@drawable/ic_izmeni"
+            android:title="@string/menu_izmeni" />
+        <item
+            android:id="@+id/nav_izbrisi"
+            android:icon="@drawable/ic_izbrisi"
+            android:title="@string/menu_izbrisi" />
+        <item
+            android:id="@+id/nav_grad"
+            android:icon="@drawable/ic_grad"
+            android:title="@string/menu_grad" />
+        <item
+            android:id="@+id/nav_datum"
+            android:icon="@drawable/ic_datum"
+            android:title="@string/menu_datum" />
+        <item
+            android:id="@+id/nav_pazar"
+            android:icon="@drawable/ic_pazar"
+            android:title="@string/menu_pazar" />
+        <item
+            android:id="@+id/nav_maxP"
+            android:icon="@drawable/ic_maxp"
+            android:title="@string/menu_maxP" />
+    </group>
+
+    <item android:title="Uradi">
+        <menu>
+            <item
+                android:id="@+id/nav_oznaci"
+                android:icon="@drawable/ic_oznaci"
+                android:title="@string/menu_oznaci" />
+            <item
+                android:id="@+id/nav_obrisiL"
+                android:icon="@drawable/ic_obrisil"
+                android:title="@string/menu_obrisiL" />
+        </menu>
+    </item>
+
+</menu>

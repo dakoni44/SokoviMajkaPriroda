@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".IzmenaActivity">
+
+    <EditText
+        android:id="@+id/edit_id2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/menu_id" />
+
+    <EditText
+        android:id="@+id/edit_ime2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:id="@+id/edit_prezime2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <EditText
+        android:id="@+id/edit_adresa2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       />
+
+    <EditText
+        android:id="@+id/edit_grad2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:id="@+id/edit_datum2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <EditText
+        android:id="@+id/edit_telefon2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+/>
+    <EditText
+        android:id="@+id/edit_sokovi2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <EditText
+        android:id="@+id/edit_cena2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <EditText
+        android:id="@+id/edit_isporuceno2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/izmeni" />
+
+
+</LinearLayout>

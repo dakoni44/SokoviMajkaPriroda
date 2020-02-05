@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Dostava</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Sokovi Majka Priroda</string>
+    <string name="nav_header_subtitle">Preljina</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_dodaj">Dodaj korisnika</string>
+    <string name="menu_ispisi">Ispisi korisnike</string>
+    <string name="menu_izmeni">Izmeni korisnika</string>
+    <string name="menu_izbrisi">Izbrisi korisnika</string>
+    <string name="menu_grad">Grad za dostavu</string>
+    <string name="menu_datum">Datum dostave</string>
+    <string name="menu_pazar">Pazar za dati dan</string>
+    <string name="menu_maxP">Najveca porudzbina</string>
+    <string name="menu_oznaci">Oznaci dostavljenog</string>
+    <string name="menu_obrisiL">Obrisi listu</string>
+    <string name="menu_id">Unesite id korisnika:</string>
+    <string name="menu_ime">Unesite ime korisnika:</string>
+    <string name="menu_prezime">Unesite prezime korisnika:</string>
+    <string name="menu_adresa">Unesite adresu korisnika:</string>
+    <string name="menu_grad2">Unesite grad za dostavu:</string>
+    <string name="menu_datum2">Unesite datum dostave:</string>
+    <string name="menu_telefon">Unesite telefon korisnika:</string>
+    <string name="menu_sokovi">Unesite broj sokova koje je narucio:</string>
+    <string name="menu_cena">Unesite cenu jedne flase:</string>
+    <string name="menu_isporuceno">Isporuceno? :</string>
+    <string name="ok">Dodaj korsinika</string>
+    <string name="izmeni">Izmeni korisnika</string>
+</resources>

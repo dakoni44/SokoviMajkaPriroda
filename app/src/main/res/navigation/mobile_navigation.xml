@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_dodaj">
+
+    <fragment
+        android:id="@+id/nav_dodaj"
+        android:name="com.example.dostava.ui.home.HomeFragment"
+        android:label="@string/menu_dodaj"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_ispisi"
+        android:name="com.example.dostava.ui.gallery.GalleryFragment"
+        android:label="@string/menu_ispisi"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_izmeni"
+        android:name="com.example.dostava.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_izmeni"
+        tools:layout="@layout/fragment_slideshow" />
+
+    <fragment
+        android:id="@+id/nav_izbrisi"
+        android:name="com.example.dostava.ui.slideshow.SlideshowFragment"
+        android:label="@string/menu_izbrisi"
+        tools:layout="@layout/izbrisi_fragment" />
+
+    <fragment
+        android:id="@+id/nav_grad"
+        android:name="com.example.dostava.ui.tools.ToolsFragment"
+        android:label="@string/menu_grad"
+        tools:layout="@layout/fragment_tools" />
+
+    <fragment
+        android:id="@+id/nav_datum"
+        android:name="com.example.dostava.ui.datum.DatumFragment"
+        android:label="@string/menu_datum"
+        tools:layout="@layout/datum_fragment" />
+
+    <fragment
+        android:id="@+id/nav_pazar"
+        android:name="com.example.dostava.ui.pazar.PazarFragment"
+        android:label="@string/menu_pazar"
+        tools:layout="@layout/pazar_fragment" />
+
+    <fragment
+        android:id="@+id/nav_maxP"
+        android:name="com.example.dostava.ui.max.MaxFragment"
+        android:label="@string/menu_maxP"
+        tools:layout="@layout/max_fragment" />
+
+    <fragment
+        android:id="@+id/nav_oznaci"
+        android:name="com.example.dostava.ui.share.ShareFragment"
+        android:label="@string/menu_oznaci"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_obrisiL"
+        android:name="com.example.dostava.ui.send.SendFragment"
+        android:label="@string/menu_obrisiL"
+        tools:layout="@layout/fragment_send" />
+</navigation>
