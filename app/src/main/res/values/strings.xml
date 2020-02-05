@@ -5,7 +5,7 @@
     <string name="nav_header_title">Sokovi Majka Priroda</string>
     <string name="nav_header_subtitle">Preljina</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="item_search">Search</string>
 
     <string name="menu_dodaj">Dodaj korisnika</string>
     <string name="menu_ispisi">Ispisi korisnike</string>
@@ -13,6 +13,7 @@
     <string name="menu_izbrisi">Izbrisi korisnika</string>
     <string name="menu_grad">Grad za dostavu</string>
     <string name="menu_datum">Datum dostave</string>
+    <string name="menu_pretrazi">Pretrazi korisnike</string>
     <string name="menu_pazar">Pazar za dati dan</string>
     <string name="menu_maxP">Najveca porudzbina</string>
     <string name="menu_oznaci">Oznaci dostavljenog</string>

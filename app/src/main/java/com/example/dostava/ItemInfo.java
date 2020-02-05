@@ -71,6 +71,8 @@ public class ItemInfo extends AppCompatActivity {
             tv6.setText("Broj sokova: " + users.get(position).getSokovi());
             TextView tv7 = findViewById(R.id.textView8);
             tv7.setText("Cena 1 soka: " + users.get(position).getCena());
+            TextView tv10 = findViewById(R.id.tvZaPlacanje);
+            tv10.setText("Za Uplatu: " + Double.parseDouble(users.get(position).getCena())*Double.parseDouble(users.get(position).getSokovi()));
             TextView tv8 = findViewById(R.id.textView9);
             tv8.setText("Isporuceno: " + users.get(position).getDobio());
         }

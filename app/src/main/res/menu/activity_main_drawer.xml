@@ -21,13 +21,9 @@
             android:icon="@drawable/ic_izbrisi"
             android:title="@string/menu_izbrisi" />
         <item
-            android:id="@+id/nav_grad"
-            android:icon="@drawable/ic_grad"
-            android:title="@string/menu_grad" />
-        <item
-            android:id="@+id/nav_datum"
-            android:icon="@drawable/ic_datum"
-            android:title="@string/menu_datum" />
+            android:id="@+id/nav_pretrazi"
+            android:icon="@drawable/ic_search"
+            android:title="@string/menu_pretrazi" />
         <item
             android:id="@+id/nav_pazar"
             android:icon="@drawable/ic_pazar"

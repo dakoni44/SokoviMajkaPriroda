@@ -30,16 +30,11 @@
         tools:layout="@layout/izbrisi_fragment" />
 
     <fragment
-        android:id="@+id/nav_grad"
+        android:id="@+id/nav_pretrazi"
         android:name="com.example.dostava.ui.tools.ToolsFragment"
-        android:label="@string/menu_grad"
+        android:label="@string/menu_pretrazi"
         tools:layout="@layout/fragment_tools" />
 
-    <fragment
-        android:id="@+id/nav_datum"
-        android:name="com.example.dostava.ui.datum.DatumFragment"
-        android:label="@string/menu_datum"
-        tools:layout="@layout/datum_fragment" />
 
     <fragment
         android:id="@+id/nav_pazar"
