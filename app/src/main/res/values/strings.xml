@@ -31,4 +31,5 @@
     <string name="ok">Dodaj korsinika</string>
     <string name="izmeni">Izmeni korisnika</string>
     <string name="izbrisi">Obrisi</string>
+    <string name="detalji">Detalji</string>
 </resources>

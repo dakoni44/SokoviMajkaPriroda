@@ -67,7 +67,7 @@ public class GalleryFragment extends Fragment {
         }else{
             while(data.moveToNext()){
                 users.add(data.getString(0)+" "+data.getString(1)+" "+data.getString(2)+" | "+
-                        data.getString(4));
+                        data.getString(4)+" | "+data.getString(5));
                 ListAdapter adapter=new ArrayAdapter<>(getContext(),android.R.layout.simple_list_item_1,users);
                 lwItems.setAdapter(adapter);
             }
