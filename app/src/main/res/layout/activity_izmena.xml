@@ -11,59 +11,69 @@
         android:id="@+id/edit_id2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/menu_id" />
+        android:hint="@string/menu_id"
+        android:inputType="textCapSentences"/>
 
     <EditText
         android:id="@+id/edit_ime2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
         />
 
     <EditText
         android:id="@+id/edit_prezime2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
          />
 
     <EditText
         android:id="@+id/edit_adresa2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
        />
 
     <EditText
         android:id="@+id/edit_grad2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
         />
 
     <EditText
         android:id="@+id/edit_datum2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
         />
 
     <EditText
         android:id="@+id/edit_telefon2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
 />
     <EditText
         android:id="@+id/edit_sokovi2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
          />
 
     <EditText
         android:id="@+id/edit_cena2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
          />
 
     <EditText
         android:id="@+id/edit_isporuceno2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="textCapSentences"
         />
 
     <Button

@@ -13,7 +13,7 @@
     <string name="menu_izbrisi">Izbrisi korisnika</string>
     <string name="menu_grad">Grad za dostavu</string>
     <string name="menu_datum">Datum dostave</string>
-    <string name="menu_pretrazi">Pretrazi korisnike</string>
+    <string name="menu_pretrazi">Pretrazi ili izmeni korisnike</string>
     <string name="menu_pazar">Pazar za dati dan</string>
     <string name="menu_maxP">Najveca porudzbina</string>
     <string name="menu_oznaci">Oznaci dostavljenog</string>

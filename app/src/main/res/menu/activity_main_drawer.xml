@@ -9,14 +9,6 @@
             android:icon="@drawable/ic_dodaj"
             android:title="@string/menu_dodaj" />
         <item
-            android:id="@+id/nav_ispisi"
-            android:icon="@drawable/ic_ispisi"
-            android:title="@string/menu_ispisi" />
-        <item
-            android:id="@+id/nav_izmeni"
-            android:icon="@drawable/ic_izmeni"
-            android:title="@string/menu_izmeni" />
-        <item
             android:id="@+id/nav_izbrisi"
             android:icon="@drawable/ic_izbrisi"
             android:title="@string/menu_izbrisi" />
@@ -36,10 +28,6 @@
 
     <item android:title="Uradi">
         <menu>
-            <item
-                android:id="@+id/nav_oznaci"
-                android:icon="@drawable/ic_oznaci"
-                android:title="@string/menu_oznaci" />
             <item
                 android:id="@+id/nav_obrisiL"
                 android:icon="@drawable/ic_obrisil"

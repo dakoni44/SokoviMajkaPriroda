@@ -11,17 +11,6 @@
         android:label="@string/menu_dodaj"
         tools:layout="@layout/fragment_home" />
 
-    <fragment
-        android:id="@+id/nav_ispisi"
-        android:name="com.example.dostava.ui.gallery.GalleryFragment"
-        android:label="@string/menu_ispisi"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_izmeni"
-        android:name="com.example.dostava.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_izmeni"
-        tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_izbrisi"
@@ -48,11 +37,6 @@
         android:label="@string/menu_maxP"
         tools:layout="@layout/max_fragment" />
 
-    <fragment
-        android:id="@+id/nav_oznaci"
-        android:name="com.example.dostava.ui.share.ShareFragment"
-        android:label="@string/menu_oznaci"
-        tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_obrisiL"

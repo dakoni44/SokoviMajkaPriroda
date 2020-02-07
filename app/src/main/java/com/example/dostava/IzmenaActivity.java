@@ -2,6 +2,7 @@ package com.example.dostava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -10,8 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.dostava.model.User;
+import com.example.dostava.ui.tools.ToolsFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class IzmenaActivity extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class IzmenaActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper;
     ArrayList<User> users=new ArrayList<>();
     private int position=0;
+    List<String> ids=new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +43,12 @@ public class IzmenaActivity extends AppCompatActivity {
                         data.getString(4), data.getString(5), data.getString(6),
                         data.getString(7), data.getString(8), data.getString(9));
                 users.add(user);
+                ids.add(data.getString(0));
             } while (data.moveToNext());
         }
         editId=findViewById(R.id.edit_id2);
         editId.setHint("Unesite id korisinika: ");
+        editId.setText(ids.get(position));
         editIme= findViewById(R.id.edit_ime2);
         editIme.setHint("Unesite ime korisinika: ");
         editIme.setText(users.get(position).getIme());
