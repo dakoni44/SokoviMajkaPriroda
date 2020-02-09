@@ -46,6 +46,7 @@ public class PazarFragment extends Fragment {
     ListView listView;
     List<String> zaIspis=new ArrayList<>();
     List<String> praznaLista=new ArrayList<>();
+    int idI;
 
     public static PazarFragment newInstance() {
         return new PazarFragment();
@@ -69,6 +70,7 @@ public class PazarFragment extends Fragment {
         }else{
             if (cursor.moveToNext()){
                 do {
+                    idI=Integer.parseInt(cursor.getString(0));
                     ime = cursor.getString(1);
                     prezime = cursor.getString(2);
                     adresa = cursor.getString(3);
@@ -78,7 +80,7 @@ public class PazarFragment extends Fragment {
                     sokovi = cursor.getString(7);
                     cena = cursor.getString(8);
                     isporuceno = cursor.getString(9);
-                    User user = new User(ime, prezime, adresa, grad, datum, telefon, sokovi, cena, isporuceno);
+                    User user = new User(idI,ime, prezime, adresa, grad, datum, telefon, sokovi, cena, isporuceno);
                     users.add(user);
                 }while(cursor.moveToNext());
             }

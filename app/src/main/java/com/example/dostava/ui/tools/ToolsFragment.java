@@ -47,9 +47,9 @@ public class ToolsFragment extends Fragment {
     ListAdapter adapter;
     Cursor data;
     ArrayList<String> users3;
-    ArrayList<String> ids=new ArrayList<>();
+    ArrayList<Integer> pozicija=new ArrayList<>();
     ListView lwItems2;
-    int pozicija=0;
+    ArrayList<Integer> pozicijaProvera=new ArrayList<>();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -80,17 +80,16 @@ public class ToolsFragment extends Fragment {
             while(data.moveToNext()){
                 users.add(data.getString(0)+" "+data.getString(1)+" "+data.getString(2)+" | "+
                         data.getString(4)+" | "+data.getString(5));
-                User user=new User(data.getString(1),data.getString(2),data.getString(3),
+                User user=new User(Integer.parseInt(data.getString(0)),data.getString(1),data.getString(2),data.getString(3),
                         data.getString(4),data.getString(5),data.getString(6),
                         data.getString(7),data.getString(8),data.getString(9));
                 users2.add(user);
-                ids.add(data.getString(0));
                 adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,users){
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                        pozicija.add(position);
                         View view= super.getView(position, convertView, parent);
-                        pozicija=position;
                         if(users2.get(position).getDobio().toLowerCase().startsWith("d") ||
                                 users2.get(position).getDobio().toLowerCase().startsWith("y")
                                 || users2.get(position).getDobio().toLowerCase().startsWith("j")){
@@ -110,7 +109,7 @@ public class ToolsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getContext(), ItemInfo.class);
-                i.putExtra("position", position);
+                i.putExtra("id", users2.get(position).getId());
                 startActivity(i);
             }
         });
@@ -126,9 +125,11 @@ public class ToolsFragment extends Fragment {
                 users4.clear();
                 for(int i=0;i<users.size();i++){
                     String user = users.get(i);
+                    int pozicijaI=pozicija.get(i);
                     if(user.toLowerCase().contains(newText.toLowerCase())){
                         users3.add(user);
                         users4.add(users2.get(i));
+                        pozicijaProvera.add(pozicijaI);
                     }
 
                 }
@@ -154,18 +155,18 @@ public class ToolsFragment extends Fragment {
                 lwItems2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                        final int which_item=pozicija;
+                        final int which_item=position;
                         new AlertDialog.Builder(getContext()).setIcon(R.drawable.ic_isporuceno).setTitle("Potvrdi isporuku")
                                 .setMessage("Korisnik koji je dobiodostavu ce se oznaciti zelenom bojom")
                                 .setPositiveButton("Da", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        users2.get(pozicija).setDobio("Jeste");
-                                        String id=ids.get(pozicija);
-                                        mDatabaseHelper.updateData(id,users2.get(pozicija).getIme(),
-                                                users2.get(pozicija).getPrezime(),users2.get(pozicija).getAdresa(),users2.get(pozicija).getGrad(),
-                                                users2.get(pozicija).getDatum(),users2.get(pozicija).getTelefon(),users2.get(pozicija).getSokovi(),
-                                                users2.get(pozicija).getCena(),users2.get(pozicija).getDobio());
+                                        users4.get(position).setDobio("Jeste");
+                                       String id=String.valueOf(users4.get(position).getId());
+                                        mDatabaseHelper.updateData(id,users4.get(position).getIme(),
+                                                users4.get(position).getPrezime(),users4.get(position).getAdresa(),users4.get(position).getGrad(),
+                                                users4.get(position).getDatum(),users4.get(position).getTelefon(),users4.get(position).getSokovi(),
+                                                users4.get(position).getCena(),users4.get(position).getDobio());
                                         lwItems.invalidateViews();
                                     }
                                 })
@@ -174,7 +175,7 @@ public class ToolsFragment extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent i = new Intent(getContext(), IzmenaActivity.class);
-                                        i.putExtra("position", pozicija);
+                                        i.putExtra("id",users4.get(position).getId());
                                         startActivity(i);
                                     }
                                 })
@@ -191,12 +192,12 @@ public class ToolsFragment extends Fragment {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 final int which_item=position;
                 new AlertDialog.Builder(getContext()).setIcon(R.drawable.ic_isporuceno).setTitle("Potvrdi isporuku")
-                        .setMessage("Korisnik koji je dobiodostavu ce se oznaciti zelenom bojom")
+                        .setMessage("Korisnik koji je dobio dostavu ce se oznaciti zelenom bojom")
                         .setPositiveButton("Da", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 users2.get(position).setDobio("Jeste");
-                                String id=ids.get(position);
+                                String id=String.valueOf(users2.get(position).getId());
                                 mDatabaseHelper.updateData(id,users2.get(position).getIme(),
                                         users2.get(position).getPrezime(),users2.get(position).getAdresa(),users2.get(position).getGrad(),
                                         users2.get(position).getDatum(),users2.get(position).getTelefon(),users2.get(position).getSokovi(),
@@ -209,7 +210,7 @@ public class ToolsFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent i = new Intent(getContext(), IzmenaActivity.class);
-                                i.putExtra("position", position);
+                                i.putExtra("id", users2.get(position).getId());
                                 startActivity(i);
                             }
                         })
@@ -222,7 +223,7 @@ public class ToolsFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(getContext(), ItemInfo.class);
-                i.putExtra("position", pozicija);
+                i.putExtra("id", users4.get(position).getId());
                 startActivity(i);
             }
         });

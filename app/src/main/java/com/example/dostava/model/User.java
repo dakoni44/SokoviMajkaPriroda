@@ -7,6 +7,7 @@ import java.util.Date;
 public class User {
     //public static SimpleDateFormat dtf= new SimpleDateFormat("dd.MM.yyyy.");
 
+    private int id;
     private String ime;
     private String prezime;
     private String adresa;
@@ -17,7 +18,11 @@ public class User {
     private String cena;
     private String dobio;
 
-    public User(String ime, String prezime, String adresa, String grad, String datum, String telefon, String sokovi, String cena, String dobio) {
+    public User() {
+    }
+
+    public User(int id, String ime, String prezime, String adresa, String grad, String datum, String telefon, String sokovi, String cena, String dobio) {
+        this.id=id;
         this.ime = ime;
         this.prezime = prezime;
         this.adresa = adresa;
@@ -29,6 +34,27 @@ public class User {
         this.dobio = dobio;
     }
 
+    public User(User a){
+        id=a.id;
+        ime=a.ime;
+        prezime=a.prezime;
+        adresa=a.adresa;
+        grad=a.grad;
+        datum=a.datum;
+        telefon=a.telefon;
+        sokovi=a.sokovi;
+        cena=a.cena;
+        dobio=a.dobio;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getIme() {
         return ime;

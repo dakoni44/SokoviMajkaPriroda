@@ -22,8 +22,9 @@ public class IzmenaActivity extends AppCompatActivity {
     private EditText editId,editIme,editPrezime,editAdresa,editGrad,editDatum,editTelefon,editSokovi,editCena,editIsporuceno;
     DatabaseHelper mDatabaseHelper;
     ArrayList<User> users=new ArrayList<>();
-    private int position=0;
     List<String> ids=new ArrayList<>();
+    User usersIspis=new User();
+
 
 
     @Override
@@ -33,49 +34,54 @@ public class IzmenaActivity extends AppCompatActivity {
 
         mDatabaseHelper=new DatabaseHelper(this);
         Cursor data=mDatabaseHelper.getListContents();
-        if (savedInstanceState != null) {
-            this.position = savedInstanceState.getInt("position");
-        }
-        final int position = getIntent().getIntExtra("position", 0);
+        /*if (savedInstanceState != null) {
+            this. = savedInstanceState.getInt("position");
+        }*/
+         int id = getIntent().getIntExtra("id", 0);
         if(data.moveToNext()) {
             do {
-                User user = new User(data.getString(1), data.getString(2), data.getString(3),
+                User user = new User(Integer.parseInt(data.getString(0)),data.getString(1), data.getString(2), data.getString(3),
                         data.getString(4), data.getString(5), data.getString(6),
                         data.getString(7), data.getString(8), data.getString(9));
                 users.add(user);
                 ids.add(data.getString(0));
             } while (data.moveToNext());
         }
+        for(int i=0;i<users.size();i++){
+            if(id==users.get(i).getId()){
+                usersIspis=new User(users.get(i));
+            }
+        }
         editId=findViewById(R.id.edit_id2);
         editId.setHint("Unesite id korisinika: ");
-        editId.setText(ids.get(position));
+        editId.setText(String.valueOf(usersIspis.getId()));
         editIme= findViewById(R.id.edit_ime2);
         editIme.setHint("Unesite ime korisinika: ");
-        editIme.setText(users.get(position).getIme());
+        editIme.setText(usersIspis.getIme());
         editPrezime=findViewById(R.id.edit_prezime2);
         editPrezime.setHint("Unesite prezime korisinika: ");
-        editPrezime.setText(users.get(position).getPrezime());
+        editPrezime.setText(usersIspis.getPrezime());
         editAdresa= findViewById(R.id.edit_adresa2);
         editAdresa.setHint("Unesite adresu korisinika: ");
-        editAdresa.setText(users.get(position).getAdresa());
+        editAdresa.setText(usersIspis.getAdresa());
         editGrad= findViewById(R.id.edit_grad2);
         editGrad.setHint("Unesite grad korisinika: ");
-        editGrad.setText(users.get(position).getGrad());
+        editGrad.setText(usersIspis.getGrad());
         editDatum= findViewById(R.id.edit_datum2);
         editDatum.setHint("Unesite datum za dostavu: ");
-        editDatum.setText(users.get(position).getDatum());
+        editDatum.setText(usersIspis.getDatum());
         editTelefon= findViewById(R.id.edit_telefon2);
         editTelefon.setHint("Unesite telefon korisinika: ");
-        editTelefon.setText(users.get(position).getTelefon());
+        editTelefon.setText(usersIspis.getTelefon());
         editSokovi= findViewById(R.id.edit_sokovi2);
         editSokovi.setHint("Unesite broj sokova: ");
-        editSokovi.setText(users.get(position).getSokovi());
+        editSokovi.setText(usersIspis.getSokovi());
         editCena= findViewById(R.id.edit_cena2);
         editCena.setHint("Unesite cenu jedne flase: ");
-        editCena.setText(users.get(position).getCena());
+        editCena.setText(usersIspis.getCena());
         editIsporuceno= findViewById(R.id.edit_isporuceno2);
         editIsporuceno.setHint("Isporuceno? : ");
-        editIsporuceno.setText(users.get(position).getDobio());
+        editIsporuceno.setText(usersIspis.getDobio());
         btnIzmeni=findViewById(R.id.button2);
         mDatabaseHelper=new DatabaseHelper(this);
         btnIzmeni.setOnClickListener(new View.OnClickListener() {
