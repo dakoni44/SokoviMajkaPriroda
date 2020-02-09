@@ -15,7 +15,7 @@
     <ListView
         android:id="@+id/lvItems3"
         android:layout_below="@id/item_search"
-        android:layout_width="180dp"
+        android:layout_width="179dp"
         android:layout_height="match_parent" />
 
     <ListView

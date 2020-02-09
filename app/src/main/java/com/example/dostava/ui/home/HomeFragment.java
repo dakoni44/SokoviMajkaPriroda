@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private Button btnOk;
+    private Button btnOk,btnReset;
     private EditText editIme,editPrezime,editAdresa,editGrad,editDatum,editTelefon,editSokovi,editCena,editIsporuceno;
     DatabaseHelper mDatabaseHelper;
 
@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment {
         editCena= view.findViewById(R.id.edit_cena);
         editIsporuceno= view.findViewById(R.id.edit_isporuceno);
         btnOk=view.findViewById(R.id.button);
+        btnReset=view.findViewById(R.id.buttonReset);
         mDatabaseHelper=new DatabaseHelper(getContext());
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,20 @@ public class HomeFragment extends Fragment {
                 String cenaS=editCena.getText().toString();
                 String isporucenoS=editIsporuceno.getText().toString();
                 AddData(imeS,prezimeS,adresaS,gradS,datumS,telefonS,sokoviS,cenaS,isporucenoS);
+            }
+        });
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editIme.setText("");
+                editPrezime.setText("");
+                editAdresa.setText("");
+                editGrad.setText("");
+                editDatum.setText("");
+                editTelefon.setText("");
+                editSokovi.setText("");
+                editCena.setText("");
+                editIsporuceno.setText("");
             }
         });
     }

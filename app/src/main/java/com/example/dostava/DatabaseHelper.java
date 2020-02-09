@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper( Context context) {
         super(context, DATABASE_NAME, null,2);
         database=this.getWritableDatabase();
+        database=this.getReadableDatabase();
 }
 
     @Override
@@ -98,5 +99,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         return db.delete(TABLE_NAME,"id_column = ?", new String[] {id});
 
-}
+    }
+
+    public boolean deleteAllData(){
+        SQLiteDatabase db=this.getWritableDatabase();
+        db.execSQL("drop table if exists "+ TABLE_NAME);
+        onCreate(db);
+        return true;
+    }
+
 }
