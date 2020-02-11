@@ -39,17 +39,17 @@ public class ToolsFragment extends Fragment {
 
     private ToolsViewModel toolsViewModel;
     DatabaseHelper mDatabaseHelper;
-    ArrayList<String> users=new ArrayList<>();
+    ArrayList<String> users = new ArrayList<>();
     ListView lwItems;
     SearchView searchView;
-    List<User> users2=new ArrayList<>();
-    List<User> users4=new ArrayList<>();
+    List<User> users2 = new ArrayList<>();
+    List<User> users4 = new ArrayList<>();
     ListAdapter adapter;
     Cursor data;
     ArrayList<String> users3;
-   // ArrayList<Integer> pozicija=new ArrayList<>();
+    // ArrayList<Integer> pozicija=new ArrayList<>();
     ListView lwItems2;
-   // ArrayList<Integer> pozicijaProvera=new ArrayList<>();
+    // ArrayList<Integer> pozicijaProvera=new ArrayList<>();
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -64,41 +64,41 @@ public class ToolsFragment extends Fragment {
         });
         return root;
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-        searchView=view.findViewById(R.id.item_search);
+        searchView = view.findViewById(R.id.item_search);
         lwItems = view.findViewById(R.id.lvItems3);
-        mDatabaseHelper=new DatabaseHelper(getContext());
-        lwItems2=view.findViewById(R.id.lvItems5);
-       lwItems2.invalidateViews();
+        mDatabaseHelper = new DatabaseHelper(getContext());
+        lwItems2 = view.findViewById(R.id.lvItems5);
 
-        data=mDatabaseHelper.getListContents();
-        if(data.getCount()==0){
-            Toast.makeText(getContext(),"Trenutno nema korisnika",Toast.LENGTH_SHORT).show();
-        }else{
-            while(data.moveToNext()){
-                users.add(data.getString(0)+" "+data.getString(1)+" "+data.getString(2)+" | "+
-                        data.getString(4)+" | "+data.getString(5));
-                User user=new User(Integer.parseInt(data.getString(0)),data.getString(1),data.getString(2),data.getString(3),
-                        data.getString(4),data.getString(5),data.getString(6),
-                        data.getString(7),data.getString(8),data.getString(9));
+
+        data = mDatabaseHelper.getListContents();
+        if (data.getCount() == 0) {
+            Toast.makeText(getContext(), "Trenutno nema korisnika", Toast.LENGTH_SHORT).show();
+        } else {
+            while (data.moveToNext()) {
+                users.add(data.getString(0) + " " + data.getString(1) + " " + data.getString(2) + " | " +
+                        data.getString(4) + " | " + data.getString(5));
+                User user = new User(Integer.parseInt(data.getString(0)), data.getString(1), data.getString(2), data.getString(3),
+                        data.getString(4), data.getString(5), data.getString(6),
+                        data.getString(7), data.getString(8), data.getString(9));
                 users2.add(user);
-                adapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,users){
+                adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, users) {
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                       // pozicija.add(position);
-                        View view= super.getView(position, convertView, parent);
-                        if(users2.get(position).getDobio().toLowerCase().startsWith("d") ||
+                        // pozicija.add(position);
+                        View view = super.getView(position, convertView, parent);
+                        if (users2.get(position).getDobio().toLowerCase().startsWith("d") ||
                                 users2.get(position).getDobio().toLowerCase().startsWith("y")
-                                || users2.get(position).getDobio().toLowerCase().startsWith("j")){
+                                || users2.get(position).getDobio().toLowerCase().startsWith("j")) {
                             view.setBackgroundColor(getResources().getColor(R.color.colorDa));
-                        }else if(users2.get(position).getDobio().toLowerCase().startsWith("n") ||
+                        } else if (users2.get(position).getDobio().toLowerCase().startsWith("n") ||
                                 users2.get(position).getDobio().isEmpty()
-                        ){
+                        ) {
                             view.setBackgroundColor(getResources().getColor(R.color.colorNe));
                         }
                         return view;
@@ -126,60 +126,62 @@ public class ToolsFragment extends Fragment {
             public boolean onQueryTextChange(String newText) {
                 users3 = new ArrayList<>();
                 users4.clear();
-                for(int i=0;i<users.size();i++){
+                for (int i = 0; i < users.size(); i++) {
                     String user = users.get(i);
-                   // int pozicijaI=pozicija.get(i);
-                    if(user.toLowerCase().contains(newText.toLowerCase())){
+                    // int pozicijaI=pozicija.get(i);
+                    if (user.toLowerCase().contains(newText.toLowerCase())) {
                         users3.add(user);
                         users4.add(users2.get(i));
-                       // pozicijaProvera.add(pozicijaI);
+                        // pozicijaProvera.add(pozicijaI);
                     }
 
                 }
 
-                adapter=new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,users3){
+                adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, users3) {
                     @NonNull
                     @Override
                     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-                        View view= super.getView(position, convertView, parent);
-                        if(users4.get(position).getDobio().toLowerCase().startsWith("d") ||
+                        View view = super.getView(position, convertView, parent);
+                        if (users4.get(position).getDobio().toLowerCase().startsWith("d") ||
                                 users4.get(position).getDobio().toLowerCase().startsWith("y")
-                                || users4.get(position).getDobio().toLowerCase().startsWith("j")){
+                                || users4.get(position).getDobio().toLowerCase().startsWith("j")) {
                             view.setBackgroundColor(getResources().getColor(R.color.colorDa));
-                        }else if(users4.get(position).getDobio().toLowerCase().startsWith("n") ||
+                        } else if (users4.get(position).getDobio().toLowerCase().startsWith("n") ||
                                 users4.get(position).getDobio().isEmpty()
-                        ){
+                        ) {
                             view.setBackgroundColor(getResources().getColor(R.color.colorNe));
                         }
                         return view;
                     }
                 };
+                //ovde
                 lwItems2.setAdapter(adapter);
+                //ovde
                 lwItems2.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                        final int which_item=position;
+                        final int which_item = position;
                         new AlertDialog.Builder(getContext()).setIcon(R.drawable.ic_isporuceno).setTitle("Potvrdi isporuku")
                                 .setMessage("Korisnik koji je dobiodostavu ce se oznaciti zelenom bojom")
                                 .setPositiveButton("Da", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         users4.get(position).setDobio("Jeste");
-                                       String id=String.valueOf(users4.get(position).getId());
-                                        mDatabaseHelper.updateData(id,users4.get(position).getIme(),
-                                                users4.get(position).getPrezime(),users4.get(position).getAdresa(),users4.get(position).getGrad(),
-                                                users4.get(position).getDatum(),users4.get(position).getTelefon(),users4.get(position).getSokovi(),
-                                                users4.get(position).getCena(),users4.get(position).getDobio());
-                                                lwItems.invalidateViews();
-                                                lwItems2.invalidateViews();
+                                        String id = String.valueOf(users4.get(position).getId());
+                                        mDatabaseHelper.updateData(id, users4.get(position).getIme(),
+                                                users4.get(position).getPrezime(), users4.get(position).getAdresa(), users4.get(position).getGrad(),
+                                                users4.get(position).getDatum(), users4.get(position).getTelefon(), users4.get(position).getSokovi(),
+                                                users4.get(position).getCena(), users4.get(position).getDobio());
+                                        lwItems.invalidateViews();
+                                        lwItems2.invalidateViews();
                                     }
                                 })
-                                .setNegativeButton("Ne",null)
+                                .setNegativeButton("Ne", null)
                                 .setNeutralButton("Izmena podataka", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         Intent i = new Intent(getContext(), IzmenaActivity.class);
-                                        i.putExtra("id",users4.get(position).getId());
+                                        i.putExtra("id", users4.get(position).getId());
                                         startActivity(i);
                                     }
                                 })
@@ -194,23 +196,24 @@ public class ToolsFragment extends Fragment {
         lwItems.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                final int which_item=position;
+                final int which_item = position;
                 new AlertDialog.Builder(getContext()).setIcon(R.drawable.ic_isporuceno).setTitle("Potvrdi isporuku")
                         .setMessage("Korisnik koji je dobio dostavu ce se oznaciti zelenom bojom")
                         .setPositiveButton("Da", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 users2.get(position).setDobio("Jeste");
-                                String id=String.valueOf(users2.get(position).getId());
-                                mDatabaseHelper.updateData(id,users2.get(position).getIme(),
-                                        users2.get(position).getPrezime(),users2.get(position).getAdresa(),users2.get(position).getGrad(),
-                                        users2.get(position).getDatum(),users2.get(position).getTelefon(),users2.get(position).getSokovi(),
-                                        users2.get(position).getCena(),users2.get(position).getDobio());
-                                    lwItems.invalidateViews();
-                                    lwItems2.invalidateViews();
+                                String id = String.valueOf(users2.get(position).getId());
+                                mDatabaseHelper.updateData(id, users2.get(position).getIme(),
+                                        users2.get(position).getPrezime(), users2.get(position).getAdresa(), users2.get(position).getGrad(),
+                                        users2.get(position).getDatum(), users2.get(position).getTelefon(), users2.get(position).getSokovi(),
+                                        users2.get(position).getCena(), users2.get(position).getDobio());
+                                lwItems.invalidateViews();
+                                //ovde
+                                lwItems2.invalidateViews();
                             }
                         })
-                        .setNegativeButton("Ne",null)
+                        .setNegativeButton("Ne", null)
                         .setNeutralButton("Izmena podataka", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -223,7 +226,8 @@ public class ToolsFragment extends Fragment {
                 return true;
             }
 
-            });
+        });
+        //ovde
         lwItems2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -233,8 +237,14 @@ public class ToolsFragment extends Fragment {
             }
         });
 
+
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 }
 
 

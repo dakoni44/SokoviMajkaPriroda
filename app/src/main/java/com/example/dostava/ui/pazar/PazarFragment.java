@@ -91,7 +91,10 @@ public class PazarFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(String.valueOf(suma()));
+                double result=suma();
+
+                    textView.setText(String.valueOf(result));
+
             }
         });
         reset=view.findViewById(R.id.button5);
@@ -121,27 +124,48 @@ public class PazarFragment extends Fragment {
         });
 
     }
-    public double suma(){
-        for(int i=0;i<users.size();i++){
-
-            String datum=editText.getText().toString();
-            if(datum.contains(users.get(i).getDatum())){
-                sum +=Double.parseDouble(users.get(i).getCena())*Double.parseDouble(users.get(i).getSokovi());
+    public double suma() {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getSokovi().isEmpty() || users.get(i).getCena().isEmpty()
+                    || users.get(i).getDatum().isEmpty()) {
+                continue;
             }
+            String datum = editText.getText().toString();
+            if (datum.equals(users.get(i).getDatum())) {
+                sum += Double.parseDouble(users.get(i).getCena()) * Double.parseDouble(users.get(i).getSokovi());
+            }
+        }
+        if(sum<=0){
+            Toast.makeText(getContext(),
+                    "Unesi datum do kraja u formatu dd.MM.yyyy. ili takav datum ne postoji u bazi" +
+                            " ili korisnici tog dana dobijaju besplatno",
+                    Toast.LENGTH_LONG).show();
         }
         return sum;
     }
+
     public void dodaj(){
         for(int i=0;i<users.size();i++){
-
             String datum=editText.getText().toString();
-            if(datum.contains(users.get(i).getDatum())){
+            if(users.get(i).getDatum().isEmpty()){
+                continue;
+            }
+            if(datum.equals(users.get(i).getDatum())  && (!users.get(i).getSokovi().isEmpty() || !users.get(i).getCena().isEmpty())){
                 usersProvera.add(users.get(i));
             }
+        }
+        if(usersProvera.size()<=0){
+            Toast.makeText(getContext(),
+                    "Unesi datum do kraja u formatu dd.MM.yyyy. ili takav datum ne postoji u bazi",
+                    Toast.LENGTH_LONG).show();
         }
     }
     public void dodaj2(){
         for(int i=0;i<usersProvera.size();i++){
+
+            if(users.get(i).getSokovi().isEmpty() || users.get(i).getCena().isEmpty()){
+                continue;
+            }
             zaIspis.add(usersProvera.get(i).getIme()+
                     " "+ usersProvera.get(i).getPrezime()+" | "+
                     usersProvera.get(i).getGrad()+
@@ -149,8 +173,9 @@ public class PazarFragment extends Fragment {
                     " : "+Double.parseDouble(usersProvera.get(i).getSokovi())*Double.parseDouble(usersProvera.get(i).getCena()));
         }
     }
-
-
-
-
 }
+
+
+
+
+
